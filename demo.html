@@ -1,0 +1,43 @@
+<!doctype html>
+<html ng-app="angularGauge">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test angular</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+</head>
+
+<body>	
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+	<script src="./bower_components/raphael/raphael.js"></script>
+    <script src="./bower_components/justgage-bower/justgage.js"></script>
+    <script src="./angular-gauge.js"></script>
+	<div ng-init="levels=['#FF0000','#0000FF','#00FF00'];color=['#FF5500']">
+		<div class="col-sm-3">
+			<h3>Basic</h3>
+			<gauge value="'13'" style="width:120px; height:90px;"></gauge>
+			<gauge value="'42'" style="width:120px; height:90px;"></gauge>
+			<gauge value="'75'" style="width:120px; height:90px;"></gauge>
+		</div>
+		<div class="col-sm-3">
+			<h3>Custom colors</h3>
+			<gauge value="'13'" levels-color="color" background-color="'gray'" style="width:120px; height:90px;"></gauge>
+			<gauge value="'42'" levels-color="color" background-color="'gray'" style="width:120px; height:90px;"></gauge>
+			<gauge value="'75'" levels-color="color" background-color="'gray'" style="width:120px; height:90px;"></gauge>
+		</div>
+		<div class="col-sm-3">
+			<h3>Color levels and title/label</h3>
+			<gauge value="'13'" levels-color="levels" title="'Title'" label="'label'" style="width:120px; height:90px;"></gauge>
+			<gauge value="'42'" levels-color="levels" title="'Title'" label="'label'" style="width:120px; height:90px;"></gauge>
+			<gauge value="'75'" levels-color="levels" title="'Title'" label="'label'" style="width:120px; height:90px;"></gauge>
+		</div>
+		<div class="col-sm-3">
+			<h3>Gradient color levels and title/label<h3>
+			<gauge value="'13'" gradient-levels-color="'true'" levels-color="levels" title="'Title'" label="'label'" style="width:120px; height:90px;"></gauge>
+			<gauge value="'42'" gradient-levels-color="'true'" levels-color="levels" title="'Title'" label="'label'" style="width:120px; height:90px;"></gauge>
+			<gauge value="'75'" gradient-levels-color="'true'" levels-color="levels" title="'Title'" label="'label'" style="width:120px; height:90px;"></gauge>
+		</div>
+	</div>
+</body>
+
+</html>

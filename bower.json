@@ -1,0 +1,13 @@
+{
+  "name": "angular-gauge",
+  "version": "1.0.0",
+  "main": "angular-gauge.js",
+  "ignore": [
+    "LICENSE",
+    "README.md"
+  ],
+   "dependencies": {
+     "justgage-bower": "https://github.com/toorshia/justgage.git"
+   },
+   "devDependencies": {}
+}
