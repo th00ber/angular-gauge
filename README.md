@@ -26,6 +26,7 @@ bower install angular-justgage
 
 Options
 ----
+  * idGauge : Specific id for the graph, if not set, the chart has a random unique id in the page
   * value
   * minValue
   * maxValue

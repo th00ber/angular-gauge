@@ -3,7 +3,7 @@ angular.module('angularGauge', []).directive('gauge', function() {
 		restrict : 'E',
 		replace : true,
 		scope : {
-			id : '@',
+			idGauge : '@',
 			value : '=',
 			minValue : '=',
 			maxValue : '=',
@@ -16,11 +16,12 @@ angular.module('angularGauge', []).directive('gauge', function() {
 		},
 		template : "<div id='{{chartId}}'></div>",
 		controller : function($scope) {
-			$scope.chartId = ($scope.id) ? $scope.id : "gauge" +getRandomInt(0, 1000);
+			$scope.chartId = ($scope.idGauge) ? $scope.idGauge : "gauge" +getRandomInt(0, 1000);
 		},
 		link : function(scope, element, attrs) {
+			// Init
 			angular.element(document).ready(function() {
-				new JustGage({
+				scope.currentGauge = new JustGage({
 					id : scope.chartId,
 					value : (scope.value) ? scope.value : 0,
 					title : (scope.title) ? scope.title : " ",
@@ -35,14 +36,14 @@ angular.module('angularGauge', []).directive('gauge', function() {
 			});
 
 			scope.$watch('max', function(updatedMax) {
-				if (updatedMax !== undefined) {
-					graph.refresh(scope.value, updatedMax);
+				if (scope.currentGauge && updatedMax !== undefined) {
+					scope.currentGauge.refresh(scope.value, updatedMax);
 				}
 			}, true);
 
 			scope.$watch('value', function(updatedValue) {
-				if (updatedValue !== undefined) {
-					graph.refresh(updatedValue);
+				if (scope.currentGauge && updatedValue !== undefined) {
+					scope.currentGauge.refresh(updatedValue);
 				}
 			}, true);
 		}
