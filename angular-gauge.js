@@ -14,9 +14,10 @@ angular.module('angularGauge', []).directive('gauge', ['$timeout', function($tim
 			levelsColor : '=',
 			gradientLevelsColor : '=',
 		},
-		template : "<div id='{{chartId}}'></div>",
+		template : "<div id='{{chartId}}' style='margin-top: {{margin}}px'></div>",
 		controller : function($scope, $timeout) {
 			$scope.chartId = ($scope.idGauge) ? $scope.idGauge : "gauge" +getRandomInt(0, 1000);
+			$scope.margin = ($scope.title) ? 0 : -15;
 		},
 		link : function(scope, element, attrs) {
 			// Init
@@ -31,7 +32,7 @@ angular.module('angularGauge', []).directive('gauge', ['$timeout', function($tim
 					label : (scope.label) ? scope.label : "",
 					showMinMax : (scope.showMinMax) ? scope.showMinMax : false,
 					gaugeColor : (scope.backgroundColor) ? scope.backgroundColor : "#EEE",
-					noGradient : (scope.gradientLevelsColor) ? scope.gradientLevelsColor : true,
+					noGradient : (scope.gradientLevelsColor) ? !scope.gradientLevelsColor : true,
 					levelColors : (scope.levelsColor) ? scope.levelsColor : ["#000000"]
 				});
 			});
