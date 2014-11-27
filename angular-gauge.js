@@ -1,4 +1,4 @@
-angular.module('angularGauge', []).directive('gauge', function() {
+angular.module('angularGauge', []).directive('gauge', ['$timeout', function($timeout) {
 	return {
 		restrict : 'E',
 		replace : true,
@@ -15,11 +15,12 @@ angular.module('angularGauge', []).directive('gauge', function() {
 			gradientLevelsColor : '=',
 		},
 		template : "<div id='{{chartId}}'></div>",
-		controller : function($scope) {
+		controller : function($scope, $timeout) {
 			$scope.chartId = ($scope.idGauge) ? $scope.idGauge : "gauge" +getRandomInt(0, 1000);
 		},
 		link : function(scope, element, attrs) {
 			// Init
+			$timeout(function(){
 			angular.element(document).ready(function() {
 				scope.currentGauge = new JustGage({
 					id : scope.chartId,
@@ -34,6 +35,7 @@ angular.module('angularGauge', []).directive('gauge', function() {
 					levelColors : (scope.levelsColor) ? scope.levelsColor : ["#000000"]
 				});
 			});
+			}, 0);
 
 			scope.$watch('max', function(updatedMax) {
 				if (scope.currentGauge && updatedMax !== undefined) {
@@ -48,4 +50,4 @@ angular.module('angularGauge', []).directive('gauge', function() {
 			}, true);
 		}
 	};
-}); 
+}]); 
