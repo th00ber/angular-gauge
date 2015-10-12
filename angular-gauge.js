@@ -15,10 +15,10 @@ angular.module('angularGauge', []).directive('gauge', ['$timeout', function($tim
 			gradientLevelsColor : '=',
 		},
 		template : "<div id='{{chartId}}' style='margin-top: {{margin}}px'></div>",
-		controller : function($scope, $timeout) {
+		controller : ['$scope', '$timeout', function($scope, $timeout) {
 			$scope.chartId = ($scope.idGauge) ? $scope.idGauge : "gauge" +getRandomInt(0, 1000);
 			$scope.margin = ($scope.title) ? 0 : -15;
-		},
+		}],
 		link : function(scope, element, attrs) {
 			// Init
 			$timeout(function(){
