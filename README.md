@@ -12,7 +12,7 @@ How to use
 -----
 bower install angular-justgage
 
- 1) Reference the JS needed
+ 1) Reference the JS needed and module
 
      <script src="./bower_components/raphael/raphael.js"></script>
     <script src="./bower_components/justgage-bower/justgage.js"></script>
@@ -32,7 +32,13 @@ Options
   * maxValue
   * title
   * label
-  * showMinMax : true/false
+  * hideMinMax : true/false
   * backgroundColor: ex: "#FF0000"
   * levelsColor: ex: 3 levels = ["#FF0000","#00FF00","#0000FF"]
   * gradientLevelsColor: true/false
+  * symbol: ex: "$"
+  * minValueFontSize: default "16"
+  * minTitlefontSize: default "10"
+  * minLabelFontSize: default "10"
+  * minMinMaxFontSize: default "10"
+  * options: options object, if the options object is set, the singles parameters are not used, the options are those used in the justgage component : https://github.com/toorshia/justgage
