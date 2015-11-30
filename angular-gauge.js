@@ -20,11 +20,16 @@ angular.module('angularGauge', []).directive('gauge', ['$timeout', function($tim
       minMinMaxFontSize : '=',
       options : '='
     },
-    template : "<div id='{{chartId}}' style='margin-top: {{margin}}px; margin-bottom: {{marginBottom}}px'></div>",
+    template : "<div id='{{chartId}}' ng-style='gaugeStyle'></div>",
     controller : ['$scope', '$timeout', function($scope, $timeout) {
       $scope.chartId = ($scope.idGauge) ? $scope.idGauge : "gauge" +getRandomInt(0, 1000);
-      $scope.margin = ($scope.title) ? 0 : -15;
-      $scope.marginBottom = (!$scope.label && $scope.hideMinMax) ? -10 : 0;
+      var margin = ($scope.title) ? 0 : -15;
+      var marginBottom = (!$scope.label && $scope.hideMinMax) ? -10 : 0;
+      $scope.gaugeStyle = {
+        "margin-top" : margin+"px",
+        "margin-bottom": marginBottom+"px"
+      };
+
     }],
     link : function(scope, element, attrs) {
       // Init
